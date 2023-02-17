@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
-import cors, { corsOptions } from "cors";
+import cors from "cors";
+import db from "./src/db/database.js"
 
 dotenv.config();
 
@@ -21,8 +22,9 @@ const corsOptions = {
 };
 
 /* A middleware that allows the server to receive requests from a different origin. */
-app.use(cors(corsOptions));
 app.use(express.json());
+app.use(cors(corsOptions));
+db()
 
 /* app.use(rutaParaEnviarAlFrontend) */
 

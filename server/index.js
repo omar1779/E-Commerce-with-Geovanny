@@ -2,8 +2,9 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import db from "./src/db/database.js"
-
+import routeServices from "./src/routes/products.routes.js";
 dotenv.config();
+
 
 const app = express();
 const PORT = process.env.PORT || 9000;
@@ -23,9 +24,9 @@ const corsOptions = {
 
 /* A middleware that allows the server to receive requests from a different origin. */
 app.use(express.json());
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 db()
-
+app.use(routeServices)
 /* app.use(rutaParaEnviarAlFrontend) */
 
 app.listen(PORT, () => {
